@@ -1,4 +1,4 @@
-package oop;
+package oop.ufc;
 
 public class Ufc {
     public static void main(String[] args) {

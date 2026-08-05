@@ -1,4 +1,4 @@
-package oop;
+package oop.ufc;
 
 public class Fighter {
     private String name;

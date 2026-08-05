@@ -1,4 +1,4 @@
-package oop;
+package oop.ufc;
 
 import java.util.Objects;
 import java.util.Random;
