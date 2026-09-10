@@ -4,6 +4,8 @@ out/
 !**/src/test/**/out/
 .kotlin
 
+desktop.ini
+
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -26,5 +28,4 @@ bin/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
-.DS_StoreDesktop.ini
+desktop.ini
