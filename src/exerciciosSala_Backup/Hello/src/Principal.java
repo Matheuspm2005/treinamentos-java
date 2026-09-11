@@ -1,4 +1,4 @@
-package exerciciosSala.Hello.src;
+package exerciciosSala_Backup.Hello.src;
 
 import java.util.Scanner;
 

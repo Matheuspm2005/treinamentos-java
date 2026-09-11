@@ -1,4 +1,4 @@
-package exerciciosSala.Fracao.src;
+package exerciciosSala_Backup.Fracao.src;
 
 public class Aritmetica{
     public static int mdc(int a, int b){
