@@ -1,3 +1,5 @@
+package exerciciosSala.Hello.src;
+
 import java.util.Scanner;
 
 public class Principal {

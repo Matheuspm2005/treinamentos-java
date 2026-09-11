@@ -1,3 +1,5 @@
+package exerciciosSala.Fracao.src;
+
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,7 +46,7 @@ public class FracaoTest {
         // (2/7) * (5/2) = 10/14 (ou 5/7 simplificado)
         x = new Fracao(2, 7);
         y = new Fracao(5, 2);
-        z = x.multiplicar(y, true);
+        z = x.multiplicar(y,true);
         assertEquals(5, z.getNumerador());
         assertEquals(7, z.getDenominador());
         assertTrue(z.getSinal());
@@ -60,14 +62,14 @@ public class FracaoTest {
     public void testarFracaoIrredutivel() {
         // 32/24 = 4/3
         Fracao x = new Fracao(32, 24);
-        Fracao z = x.getFracaoIrredutivel();
+        Fracao z = x.getFracaoIrredutivel(x);
         assertEquals(4, z.getNumerador());
         assertEquals(3, z.getDenominador());
         assertTrue(z.getSinal());
 
         // -5/15 = -1/3
         x = new Fracao(-5, 15);
-        z = x.getFracaoIrredutivel();
+        z = x.getFracaoIrredutivel(x);
         assertEquals(1, z.getNumerador());
         assertEquals(3, z.getDenominador());
         assertFalse(z.getSinal());

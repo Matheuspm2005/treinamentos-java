@@ -1,3 +1,5 @@
+package exerciciosSala.Banco.src;
+
 public class Pessoa {
 
     protected String nome;
