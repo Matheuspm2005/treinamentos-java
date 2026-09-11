@@ -1,16 +1,24 @@
-public class Aritmetica {
+package exerciciosSala_Backup.Fracao.src;
 
-    public static int calcularMdc(int x, int y) {
-        int resto = x % y;
-        while (resto > 0) {
-            x = y;
-            y = resto;
-            resto = x % y;
+public class Aritmetica{
+    public static int mdc(int a, int b){
+        int menor = a>b ? b:a;
+        int maior = a>b ? a:b;
+        int resto= 1;
+        while(resto != 0){
+            resto = maior % menor;
+            maior = menor;
+            menor = resto;
         }
-        return y;
+        return maior;
     }
 
-    public static int calcularMmc(int x, int y) {
-        return x * y / calcularMdc(x, y);
+
+    public static int mmc(Fracao f1, Fracao f2, int mdc){
+        return (f1.getDenominador()* f2.getDenominador()) / Aritmetica.mdc(f1.getDenominador(), f2.getDenominador());
+    }
+
+    public static int mmc(int a, int b){
+        return (Math.abs(a * b) / mdc(a, b));
     }
 }

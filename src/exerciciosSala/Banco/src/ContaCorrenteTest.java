@@ -1,3 +1,5 @@
+package exerciciosSala_Backup.Banco.src;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -8,7 +10,7 @@ public class ContaCorrenteTest {
     @Test
     public void testarSaqueComContaSemSaldoSuficienteEForaDoLimite() {
         // prepara o cenário de teste
-        ContaCorrente contaTeste = new ContaCorrente(123);
+        ContaCorrente contaTeste = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDoSaque = contaTeste.getSaldo();
         float valorDoSaque = saldoAntesDoSaque + ContaCorrente.LIMITE_CHEQUE_ESPECIAL + 10;
 
@@ -25,7 +27,7 @@ public class ContaCorrenteTest {
     @Test
     public void testarSaqueComContaSemSaldoSuficienteMasDentroDoLimite() {
         // prepara o cenário de teste
-        ContaCorrente contaTeste = new ContaCorrente(123);
+        ContaCorrente contaTeste = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDoSaque = contaTeste.getSaldo();
         float valorDoSaque = saldoAntesDoSaque + ContaCorrente.LIMITE_CHEQUE_ESPECIAL - 5;
 
@@ -42,7 +44,7 @@ public class ContaCorrenteTest {
     @Test
     public void testarSaqueBemSucedido() {
         // prepara o cenário de teste
-        ContaCorrente contaTeste = new ContaCorrente(123);
+        ContaCorrente contaTeste = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDoSaque = contaTeste.getSaldo();
         float valorDoSaque = 1.00f;
 
@@ -58,10 +60,10 @@ public class ContaCorrenteTest {
     @Test
     public void testarTransferênciaBemSucedida() {
         // prepara o cenário de teste
-        ContaCorrente contaOrigem = new ContaCorrente(123);
+        ContaCorrente contaOrigem = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDaTransferenciaNaContaOrigem = contaOrigem.getSaldo();
 
-        ContaCorrente contaDestino = new ContaCorrente(3465);
+        ContaCorrente contaDestino = new ContaCorrente(new Pessoa("abcd", 1234));
         float saldoAntesDaTransferenciaNaContaDestino = contaDestino.getSaldo();
 
         float valorDaTransferencia = 1.00f;
@@ -82,10 +84,10 @@ public class ContaCorrenteTest {
     @Test
     public void testarTransferênciaDeValorDentroDoLimite() {
         // prepara o cenário de teste
-        ContaCorrente contaOrigem = new ContaCorrente(123);
+        ContaCorrente contaOrigem = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDaTransferenciaNaContaOrigem = contaOrigem.getSaldo();
 
-        ContaCorrente contaDestino = new ContaCorrente(3465);
+        ContaCorrente contaDestino = new ContaCorrente(new Pessoa("abcd", 1234));
         float saldoAntesDaTransferenciaNaContaDestino = contaDestino.getSaldo();
 
         float valorDaTransferencia = saldoAntesDaTransferenciaNaContaOrigem +
@@ -107,10 +109,10 @@ public class ContaCorrenteTest {
     @Test
     public void testarTransferênciaDeValorAcimaDoLimite() {
         // prepara o cenário de teste
-        ContaCorrente contaOrigem = new ContaCorrente(123);
+        ContaCorrente contaOrigem = new ContaCorrente(new Pessoa("abc", 123));
         float saldoAntesDaTransferenciaNaContaOrigem = contaOrigem.getSaldo();
 
-        ContaCorrente contaDestino = new ContaCorrente(3465);
+        ContaCorrente contaDestino = new ContaCorrente(new Pessoa("abcd", 1234));
         float saldoAntesDaTransferenciaNaContaDestino = contaDestino.getSaldo();
 
         float valorDaTransferencia = saldoAntesDaTransferenciaNaContaOrigem +
@@ -132,7 +134,7 @@ public class ContaCorrenteTest {
     @Test
     public void testarPremioDaCentesimaContaCriada() {
         for (int i = 1; i <= 100; i++) {
-            ContaCorrente conta = new ContaCorrente(123);
+            ContaCorrente conta = new ContaCorrente(new Pessoa("abc", 123));
             if (i < 100) {
                 assertEquals(50, conta.getSaldo(), ACCEPTED_FLOAT_DELTA);
             } else {

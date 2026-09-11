@@ -1,3 +1,5 @@
+package exerciciosSala_Backup.Banco.src;
+
 public class GerenteGeral extends Gerente {
 
     private int bonus;

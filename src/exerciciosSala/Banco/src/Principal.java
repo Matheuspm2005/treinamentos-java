@@ -1,9 +1,11 @@
+package exerciciosSala_Backup.Banco.src;
+
 public class Principal {
 
     public static void main(String[] args) {
 
-        ContaCorrente contaDoFulano = new ContaCorrente(5425);
-        ContaCorrente contaDaCicrana = new ContaCorrente(2132);
+        ContaCorrente contaDoFulano = new ContaCorrente(new Pessoa("abc", 123));
+        ContaCorrente contaDaCicrana = new ContaCorrente(new Pessoa("abcd", 1234));
 
         contaDoFulano.idBanco = 6;
 

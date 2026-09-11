@@ -1,3 +1,5 @@
+package exerciciosSala_Backup.Banco.src;
+
 public class Gerente extends Pessoa {
     private int matricula;
     private int salario;
