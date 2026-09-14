@@ -1,5 +1,6 @@
-import org.junit.Test;
+package exerciciosSala.Elevador.src;
 
+import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +9,7 @@ public class ElevadorDePassageirosTest {
 
     @Test
     public void testarSequenciaDeParadas() {
-        ElevadorDePassageiros elevador = new ElevadorDePassageiros(10);
+        ElevadorDePassageiros elevador = new ElevadorDePassageiros(10, 500);
 
         elevador.solicitarParada(4);
         elevador.solicitarParada(2);

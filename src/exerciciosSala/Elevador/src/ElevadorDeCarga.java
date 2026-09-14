@@ -1,11 +1,14 @@
+package exerciciosSala.Elevador.src;
+
 public class ElevadorDeCarga extends Elevador {
 
-    public ElevadorDeCarga(int quantAndares) {
-        // ToDo IMPLEMENT ME!!
+    public ElevadorDeCarga(int quantAndares, int cargaMaxima) {
+        super(cargaMaxima, quantAndares);
     }
 
     @Override
     protected int decidirProximaParada() {
-        return 0;  // ToDo IMPLEMENT ME!!!
+        return paradas.getFirst();
     }
+
 }

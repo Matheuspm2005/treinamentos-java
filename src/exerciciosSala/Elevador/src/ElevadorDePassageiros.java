@@ -1,11 +1,26 @@
+package exerciciosSala.Elevador.src;
+
 public class ElevadorDePassageiros extends Elevador {
 
-    public ElevadorDePassageiros(int quantAndares) {
-        // ToDo IMPLEMENT ME!!
+    public ElevadorDePassageiros(int quantAndares, int cargaMaxima) {
+        super(cargaMaxima, quantAndares);
     }
 
     @Override
     protected int decidirProximaParada() {
-        return 0;  // ToDo IMPLEMENT ME!!!
+        if(this.isSubindo()){
+            for (Integer parada : this.paradas) {
+                if (parada >= this.getAndarCorrente())
+                    return parada;
+            }
+        }
+        else{
+            for (Integer parada : this.paradas) {
+                if (parada <= this.getAndarCorrente())
+                    return parada;
+            }
+        }
+        return this.paradas.getFirst();
     }
 }
+

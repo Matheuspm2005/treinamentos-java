@@ -1,7 +1,41 @@
+package exerciciosSala.Elevador.src;
+
 import java.util.ArrayList;
 
 public abstract class Elevador {
+    private int cargaCorrente;
+    private int andarCorrente;
+    private int andarMaisAlto;
+    private int cargaMaxima;
+    private boolean subindo;
+    private boolean movendo;
+    protected ArrayList<Integer> paradas = new ArrayList<>();
+    protected ArrayList<Integer> paradasEfetuadas = new ArrayList<>();
 
+    public Elevador(int cargaMaxima, int andarMaisAlto) {
+        this.andarCorrente = 0;
+        this.cargaCorrente = 0;
+        this.cargaMaxima = cargaMaxima;
+        this.subindo = true;
+        this.movendo = false;
+        this.andarMaisAlto = andarMaisAlto;
+    }
+
+    public boolean isSubindo() {
+        return subindo;
+    }
+
+    public void embarcar(int carga) {
+        if ((this.cargaCorrente + carga) <= this.cargaMaxima) {
+            this.cargaCorrente += carga;
+        }
+    }
+
+    public void desembarcar(int carga) {
+        if ((this.cargaCorrente - carga >= 0)) {
+            this.cargaCorrente -= carga;
+        }
+    }
     /**
      * Retorna o histórico com todas as paradas efetuadas pelo
      * elevador desde a sua criação.
@@ -10,7 +44,7 @@ public abstract class Elevador {
      * realizadas.
      */
     public ArrayList<Integer> getParadasEfetuadas() {
-        return null;  // ToDo IMPLEMENT ME!!
+        return paradasEfetuadas;
     }
 
     /**
@@ -19,7 +53,9 @@ public abstract class Elevador {
      * @param andar o andar desejado
      */
     public void solicitarParada(int andar) {
-        // ToDo IMPLEMENT ME!!
+        if(andar < this.andarMaisAlto && andar >= 0) {
+            this.paradas.add(andar);
+        }
     }
 
     /**
@@ -35,7 +71,12 @@ public abstract class Elevador {
      * Se o elevador já estava em movimento, nada acontece.
      */
     public void mover() {
-        // ToDo IMPLEMENT ME!!
+        irPara(paradas.getFirst());
+        movendo = true;
+        while(!paradas.isEmpty()) {
+            irPara(decidirProximaParada());
+        }
+        movendo = false;
     }
 
     /**
@@ -47,11 +88,14 @@ public abstract class Elevador {
      * @param andar O próximo destino.
      */
     private void irPara(int andar) {
-        // ToDo IMPLEMENT ME!!
+        subindo = andar >= getAndarCorrente();
+        this.andarCorrente = andar;
+        paradasEfetuadas.add(andar);
+        paradas.remove(Integer.valueOf(andar));
     }
 
     public int getAndarCorrente() {
-        return 0;  // ToDo IMPLEMENT ME!!
+        return andarCorrente;
     }
 
     /** Decide qual será a próxima parada, baseado no andar corrente,
@@ -63,3 +107,4 @@ public abstract class Elevador {
      */
     protected abstract int decidirProximaParada();
 }
+

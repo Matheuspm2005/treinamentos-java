@@ -1,3 +1,5 @@
+package exerciciosSala.Elevador.src;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ public class ElevadorDeCargaTest {
 
     @Test
     public void testarSequenciaDeParadas() {
-        ElevadorDeCarga elevador = new ElevadorDeCarga(10);
+        ElevadorDeCarga elevador = new ElevadorDeCarga(10, 500);
 
         elevador.solicitarParada(4);
         elevador.solicitarParada(2);
