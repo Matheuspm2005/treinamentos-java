@@ -1,4 +1,4 @@
-package exerciciosSala_Backup.Banco.src;
+package exerciciosSala.Banco.src;
 
 public class GerenteGeral extends Gerente {
 
