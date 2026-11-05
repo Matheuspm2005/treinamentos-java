@@ -11,6 +11,6 @@ public class Figurinha implements Colecionavel {
 
     @Override
     public int getPosicao() {
-        return 0;
+        return posicao;
     }
 }
