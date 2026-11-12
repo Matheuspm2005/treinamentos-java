@@ -1,6 +1,10 @@
 package exerciciosSala.Banco.src;
 
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class ContaCorrenteTest {
@@ -142,5 +146,36 @@ public class ContaCorrenteTest {
                         1050, conta.getSaldo(), ACCEPTED_FLOAT_DELTA);
             }
         }
+    }
+
+    @Test
+    public void testarReceberDepositoComValorInvalido(){
+        ContaCorrente conta = new ContaCorrente(new Pessoa("abc", 123));
+        float saldoAntesDoDepositoNaConta = conta.getSaldo();
+
+        conta.receberDeposito(-5);
+        assertEquals(saldoAntesDoDepositoNaConta, conta.getSaldo(), ACCEPTED_FLOAT_DELTA);
+    }
+
+    @Test(expected = LimiteNotasExcedidoException.class)
+    public void testarReceberDepositoComNotasAcimaDoPermitido() throws LimiteNotasExcedidoException {
+        ContaCorrente conta = new ContaCorrente(new Pessoa("abc", 123));
+        Map<Dinheiro, Integer> contDinheiroPorTipo = new HashMap<>();
+        contDinheiroPorTipo.put(Dinheiro.CINQUENTAREAIS, 50);
+        contDinheiroPorTipo.put(Dinheiro.VINTEREAIS, 1);
+        conta.receberDeposito(contDinheiroPorTipo);
+    }
+
+    @Test
+    public void testarReceberDeposito() throws LimiteNotasExcedidoException {
+        ContaCorrente conta = new ContaCorrente(new Pessoa("abc", 123));
+        float saldoAntesDoDepositoNaConta = conta.getSaldo();
+        Map<Dinheiro, Integer> contDinheiroPorTipo = new HashMap<>();
+        contDinheiroPorTipo.put(Dinheiro.CINQUENTAREAIS, 30);
+        contDinheiroPorTipo.put(Dinheiro.VINTEREAIS, 1);
+        contDinheiroPorTipo.put(Dinheiro.UMREAL, 10);
+        contDinheiroPorTipo.put(Dinheiro.CINQUENTACENTAVOS, 1);
+        conta.receberDeposito(contDinheiroPorTipo);
+        assertEquals(conta.getSaldo(), (saldoAntesDoDepositoNaConta+1530.5f), ACCEPTED_FLOAT_DELTA);
     }
 }

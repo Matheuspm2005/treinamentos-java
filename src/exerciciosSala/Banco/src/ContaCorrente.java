@@ -1,12 +1,14 @@
 package exerciciosSala.Banco.src;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 public class ContaCorrente {
 
     public static final float LIMITE_CHEQUE_ESPECIAL = 500;
     private static final Random GERADOR = new Random();
+    public static final int MAXIMO_CEDULAS_POR_DEPOSITO = 50;
 
     // atributos
     private final Pessoa correntista;
@@ -68,6 +70,33 @@ public class ContaCorrente {
 
     public int getQuantContasCriadas() {
         return quantContasCriadas;
+    }
+
+    public void receberDeposito(float valor){
+        if(valor > 0){
+            this.saldo += valor;
+        }
+        else{
+            System.out.println("Valor Invalido");
+        }
+    }
+
+    public void receberDeposito(Map<Dinheiro, Integer> contDinheiroPorTipo) throws LimiteNotasExcedidoException {
+        int notas = 0;
+        float valor = 0;
+        for (Map.Entry<Dinheiro, Integer> entry : contDinheiroPorTipo.entrySet()){
+            Dinheiro chave = entry.getKey();
+            Integer quant = entry.getValue();
+            if(!chave.isMoeda())
+                notas += quant;
+            valor += chave.getValor() * quant;
+        }
+        if(notas > 50){
+            throw new LimiteNotasExcedidoException("Limite de cedulas e 50");
+        }
+        else{
+            receberDeposito(valor);
+        }
     }
 }
 
